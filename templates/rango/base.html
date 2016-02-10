@@ -14,7 +14,22 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'grafica.js' %}"></script>
+    <script>
+    $(function(){
+            $.ajax({
+                url: "{% url 'reclama_datos' %}",
+                type: "get",
+                success: function(datos){
+                    Visualiza_datos(datos);
+                },
+                failure: function(datos){
+                    alert('No se pueden visualizar los datos');
+                }
+            });
+        });
 
+    </script>
   </head>
   <body>
 
@@ -58,24 +73,6 @@
 
                     {% endif %}
                 {% endblock %}
-                <!-- Grafica -->
-                <script src="https://code.highcharts.com/highcharts.js"></script>
-                <script src="{% static 'grafica.js' %}"></script>
-                <script type="text/javascript">
-                $(function(){
-                        $.ajax({
-                            url: "{% url 'reclama_datos' %}",
-                            type: "get",
-                            success: function(datos){
-                                Visualiza_datos(datos);
-                            },
-                            failure: function(datos){
-                                alert('No se pueden visualizar los datos');
-                            }
-                        });
-                    });
-
-                </script>
                 <div id="container" style="height: 300px"></div>
                 <!-- botones de tamaño de letra -->
                 <div class="btn-group" role="group">
