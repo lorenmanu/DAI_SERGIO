@@ -14,8 +14,5 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name="logout"),
     url(r'^bar/(?P<bar_name_slug>[\w\-]+)/tapas/(?P<tapas_name_slug>[\w\-]+)/$', views.tapas, name="tapas"),
     url(r'^bar/(?P<bar_name_slug>[\w\+]+)/tapas/(?P<tapas_name_slug>[\w\-]+)/add_votos/$', views.add_votos, name="ad_votos"),
-    url(r'^datos/$', views.reclama_datos, name="reclama_datos"), 
+    url(r'^datos/$', views.reclama_datos, name="reclama_datos"),
 ]
-
-if not settings.DEBUG:
-    urlpatterns  += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
